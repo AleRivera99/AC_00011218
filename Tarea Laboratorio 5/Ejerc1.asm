@@ -12,13 +12,13 @@ org 100h
     
     call modotexto
     call movercursornombre
-    call escribirnombre
+    call imprimirnombre
     call movecursornombre2
-    call escribirnombre2
+    call imprimirnombre2
     call movercursorapellido
-    call escribirapellido
+    call imprimirapellido
     call movercursorapellido2
-    call escribirapellido2
+    call imprimirapellido2
     call esperartecla
     call exit
 
@@ -36,7 +36,7 @@ org 100h
         INT 10h
         RET
 
-    escribirnombre: 
+    imprimirnombre: 
         MOV AH, 09h 
         MOV DX, nombre
         INT 21h
@@ -50,7 +50,7 @@ org 100h
         INT 10h
         RET
 
-    escribirnombre2: 
+    imprimirnombre2: 
         MOV AH, 09h 
         MOV DX, nombre2
         INT 21h
@@ -64,7 +64,7 @@ org 100h
         INT 10h
         RET
 
-    escribirapellido: 
+    imprimirapellido: 
         MOV AH, 09h 
         MOV DX, apellido 
         INT 21h
@@ -78,7 +78,7 @@ org 100h
         INT 10h
         RET
 
-    escribirapellido2: 
+    imprimirapellido2: 
         MOV AH, 09h ;
         MOV DX, apellido2 
         INT 21h
