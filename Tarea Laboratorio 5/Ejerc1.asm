@@ -11,12 +11,14 @@ org 100h
     MOV DI, 0d
     
     call modotexto
-    call movercursorname
-	call escribirname
-	call movercursorapellido
-	call escribirapellido
-	call movercursorsegundoapellido
-	call escribirsegundoapellido
+    call movercursornombre
+    call escribirnombre
+    call movecursornombre2
+    call escribirnombre2
+    call movercursorapellido
+    call escribirapellido
+    call movercursorapellido2
+    call escribirapellido2
     call esperartecla
     call exit
 
@@ -26,7 +28,7 @@ org 100h
         INT 10h
         RET
 
-    movercursorname:
+    movercursornombre:
         MOV AH, 02h 
         MOV DH, 10 
         MOV DL, 20
@@ -34,15 +36,29 @@ org 100h
         INT 10h
         RET
 
-    escribirname: 
+    escribirnombre: 
         MOV AH, 09h 
-        MOV DX, name 
+        MOV DX, nombre
         INT 21h
         RET
 
-	movercursorapellido:
-        MOV AH, 02h
+    movercursornombre2:
+        MOV AH, 02h 
         MOV DH, 12 
+        MOV DL, 20
+        MOV BH, 0h 
+        INT 10h
+        RET
+
+    escribirnombre2: 
+        MOV AH, 09h 
+        MOV DX, nombre2
+        INT 21h
+        RET
+
+    movercursorapellido:
+        MOV AH, 02h
+        MOV DH, 14 
         MOV DL, 20 
         MOV BH, 0h 
         INT 10h
@@ -54,18 +70,17 @@ org 100h
         INT 21h
         RET
 
-
-	movercursorsegundoapellido:
+    movercursorsapellido2:
         MOV AH, 02h 
-        MOV DH, 14
+        MOV DH, 16
         MOV DL, 20 
         MOV BH, 0h 
         INT 10h
         RET
 
-    escribirsegundoapellido: 
+    escribirapellido2: 
         MOV AH, 09h ;
-        MOV DX, segundoapellido 
+        MOV DX, apellido2 
         INT 21h
         RET
 
@@ -79,6 +94,7 @@ org 100h
 
 section .data
 
-name DB "Alejandro $"
+nombre DB "Alejandro $"
+nombre2 DB "Enrique $"
 apellido DB "Rivera $"
-segundoapellido DB "Vasquez $"
+apellido2 DB "Vasquez $"
