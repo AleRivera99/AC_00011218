@@ -2,8 +2,8 @@
 
         section	.text
         mov cx, 5
-        call 	LeerCadena
-        call 	EsperarTecla
+        call 	ReadCadena
+        call 	WaitTecla
 
         int 	20h
 
@@ -13,14 +13,14 @@
         incorrecta db "incorrecto$" 
         contra db "pswrd" 
 
-    EsperarTecla:
+    WaitTecla:
             mov     AH, 07h         
             int     21h
             ret
-    LeerCadena:
+    ReadCadena:
             xor     SI, SI         
     while:  
-            call    EsperarTecla   
+            call    WaitTecla   
             cmp     AL, 0x0D        
             je      verify            
             mov     [300h+SI], AL   
